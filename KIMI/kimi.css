@@ -1,0 +1,1187 @@
+/*
+============================================================================
+MAMAPUTONLINE STYLESHEET
+============================================================================
+DEWEY CLASSIFICATION DOCUMENTATION:
+
+006.74  - Web Development & CSS Styling
+025.04  - Information Organization (Design Systems)
+741.6   - Graphic Design & Visual Communication
+794.8   - Interactive Media Design
+
+THEME: Dark Red (#8B0000) and Gold (#FFD700)
+IDE: Visual Studio Code
+============================================================================
+*/
+
+/* =========================================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   Purpose: Centralized color and spacing management for easy theming
+   ========================================================================= */
+:root {
+    /* Primary Theme Colors */
+    --color-dark-red: #8B0000;          /* Primary brand color - dark red */
+    --color-dark-red-light: #A52A2A;    /* Lighter variant for hover states */
+    --color-dark-red-dark: #5C0000;     /* Darker variant for shadows */
+
+    /* Secondary Theme Colors */
+    --color-gold: #FFD700;              /* Secondary brand color - gold */
+    --color-gold-light: #FFE55C;        /* Lighter gold for highlights */
+    --color-gold-dark: #B8860B;         /* Darker gold for borders */
+
+    /* Neutral Colors */
+    --color-white: #FFFFFF;
+    --color-black: #1A1A1A;
+    --color-gray-100: #F5F5F5;
+    --color-gray-200: #E5E5E5;
+    --color-gray-300: #D4D4D4;
+    --color-gray-400: #A3A3A3;
+    --color-gray-500: #737373;
+    --color-gray-600: #525252;
+    --color-gray-700: #404040;
+    --color-gray-800: #262626;
+    --color-gray-900: #171717;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;
+
+    /* Spacing Scale */
+    --space-xs: 0.25rem;    /* 4px */
+    --space-sm: 0.5rem;     /* 8px */
+    --space-md: 1rem;       /* 16px */
+    --space-lg: 1.5rem;     /* 24px */
+    --space-xl: 2rem;       /* 32px */
+    --space-2xl: 3rem;      /* 48px */
+    --space-3xl: 4rem;      /* 64px */
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    --shadow-gold: 0 4px 15px rgba(255, 215, 0, 0.3);
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Z-index Scale */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal: 400;
+    --z-tooltip: 500;
+}
+
+/* =========================================================================
+   RESET & BASE STYLES
+   Purpose: Normalize browser defaults and set base typography
+   ========================================================================= */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-gray-800);
+    background-color: var(--color-gray-100);
+    /* Account for sticky navbar and footer */
+    padding-top: 70px;
+    padding-bottom: 80px;
+    padding-left: 220px; /* Space for side panel */
+    min-height: 100vh;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-gray-200);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-dark-red);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-dark-red-light);
+}
+
+/* =========================================================================
+   SECTION 1: STICKY NAVIGATION BAR
+   DEWEY: 006.74 - Web Interface Design
+   ========================================================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-sticky);
+    background-color: var(--color-dark-red);
+    /* Dark red-colored frame with border */
+    border: 3px solid var(--color-gold-dark);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-sm) var(--space-lg);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+}
+
+/* Logo Section - Top Left */
+.logo-section {
+    flex-shrink: 0;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: var(--space-sm);
+}
+
+.logo-svg {
+    width: 160px;
+    height: 48px;
+    display: block;
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    display: none; /* Hidden on desktop, SVG logo is primary */
+}
+
+/* Navigation Menu - Center */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--space-xl);
+    align-items: center;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+    text-decoration: none;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-gold);
+    transition: all var(--transition-normal);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-gold);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+/* Search Window - Top Right */
+.search-section {
+    flex-shrink: 0;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-full);
+    padding: var(--space-xs) var(--space-sm);
+    transition: all var(--transition-normal);
+}
+
+.search-form:focus-within {
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: var(--shadow-gold);
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    width: 180px;
+    padding: var(--space-xs) var(--space-sm);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-btn {
+    background: var(--color-gold);
+    border: none;
+    border-radius: var(--radius-full);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-dark-red);
+    transition: all var(--transition-fast);
+}
+
+.search-btn:hover {
+    background: var(--color-gold-light);
+    transform: scale(1.1);
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: var(--space-sm);
+}
+
+/* =========================================================================
+   SECTION 2: SIDE PANEL (LEFT NAVIGATION)
+   DEWEY: 006.74 - Navigation Systems
+   ========================================================================= */
+.side-panel {
+    position: fixed;
+    top: 70px; /* Below navbar */
+    left: 0;
+    bottom: 80px; /* Above footer */
+    width: 200px;
+    background-color: var(--color-dark-red);
+    border-right: 3px solid var(--color-gold-dark);
+    z-index: var(--z-fixed);
+    padding: var(--space-lg) 0;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+}
+
+.side-panel-header {
+    padding: 0 var(--space-lg) var(--space-lg);
+    border-bottom: 2px solid var(--color-gold-dark);
+    margin-bottom: var(--space-lg);
+}
+
+.side-panel-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.side-panel-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.side-panel-item {
+    width: 100%;
+}
+
+.side-panel-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all var(--transition-normal);
+    border-left: 4px solid transparent;
+}
+
+.side-panel-link i {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+    color: var(--color-gold);
+}
+
+.side-panel-link:hover {
+    background-color: rgba(255, 215, 0, 0.15);
+    border-left-color: var(--color-gold);
+    color: var(--color-gold);
+    padding-left: var(--space-xl);
+}
+
+/* =========================================================================
+   SECTION 3: HERO SECTION
+   DEWEY: 741.6 - Visual Communication Design
+   ========================================================================= */
+.hero-section {
+    width: 100%;
+    min-height: 35vh; /* 35% of viewport height */
+    background: linear-gradient(135deg, var(--color-gold) 0%, #F4A460 50%, var(--color-gold-light) 100%);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--space-3xl);
+}
+
+/* Decorative pattern overlay */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238B0000' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+}
+
+.hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+    padding: var(--space-3xl);
+    position: relative;
+    z-index: 1;
+    min-height: 35vh;
+}
+
+/* Hero Image Column */
+.hero-image-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    border: 4px solid var(--color-dark-red);
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.hero-image-wrapper:hover .hero-image {
+    transform: scale(1.05);
+}
+
+.hero-image-overlay {
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-md);
+}
+
+.hero-badge {
+    background-color: var(--color-dark-red);
+    color: var(--color-gold);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-md);
+}
+
+/* Hero Text Column */
+.hero-text-col {
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: left;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--color-dark-red);
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+    text-shadow: 2px 2px 0 rgba(139, 0, 0, 0.1);
+}
+
+.hero-highlight {
+    color: var(--color-white);
+    text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.3);
+    display: inline-block;
+    position: relative;
+}
+
+.hero-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background-color: var(--color-dark-red);
+    opacity: 0.3;
+    border-radius: var(--radius-sm);
+    z-index: -1;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-gray-700);
+    margin-bottom: var(--space-xl);
+    line-height: 1.7;
+    max-width: 500px;
+}
+
+.hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.feature-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background-color: rgba(139, 0, 0, 0.1);
+    color: var(--color-dark-red);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(139, 0, 0, 0.2);
+}
+
+.feature-tag i {
+    color: var(--color-gold-dark);
+}
+
+/* Call-To-Action Button */
+.hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-md);
+    background-color: var(--color-dark-red);
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: var(--space-md) var(--space-2xl);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    border: 3px solid var(--color-gold);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.hero-cta-btn:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark-red);
+    border-color: var(--color-dark-red);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl), var(--shadow-gold);
+}
+
+.hero-cta-btn i {
+    font-size: 1.1rem;
+}
+
+/* =========================================================================
+   SECTION 4: MAIN CONTENT - PRODUCT ROWS
+   DEWEY: 338.4764 - E-Commerce Food Retail
+   ========================================================================= */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+/* Product Row Container */
+.product-row {
+    margin-bottom: var(--space-3xl);
+    scroll-margin-top: 80px; /* Offset for sticky navbar */
+}
+
+/* Row Header */
+.row-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 3px solid var(--color-gold);
+    position: relative;
+}
+
+.row-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--color-dark-red);
+}
+
+.row-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-dark-red);
+    margin-bottom: var(--space-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+.row-title i {
+    color: var(--color-gold-dark);
+    font-size: 2rem;
+}
+
+.row-description {
+    font-size: 1.1rem;
+    color: var(--color-gray-500);
+    font-style: italic;
+}
+
+/* Product Grid - 7 cards per row */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--space-md);
+}
+
+/* Product Card */
+.product-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--color-gray-200);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-gold);
+}
+
+/* Card Image */
+.card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.product-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-badge {
+    position: absolute;
+    top: var(--space-sm);
+    left: var(--space-sm);
+    background-color: var(--color-dark-red);
+    color: var(--color-gold);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Card Body */
+.card-body {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--space-sm);
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-dark-red);
+    line-height: 1.3;
+}
+
+.card-desc {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+/* Card Meta - Quantity and Price */
+.card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-top: var(--space-sm);
+    border-top: 1px dashed var(--color-gray-300);
+}
+
+.card-quantity {
+    font-size: 0.75rem;
+    color: var(--color-gray-400);
+    font-weight: 600;
+}
+
+.card-price {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--color-dark-red);
+}
+
+/* Add to Cart Button */
+.card-btn {
+    width: 100%;
+    background-color: var(--color-dark-red);
+    color: var(--color-gold);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    transition: all var(--transition-fast);
+    margin-top: auto;
+}
+
+.card-btn:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark-red);
+}
+
+/* =========================================================================
+   SECTION 5 & 6: INFO SECTIONS (Customer Service & Contact)
+   DEWEY: 658.8 - Business Communication
+   ========================================================================= */
+.info-section {
+    background-color: var(--color-white);
+    padding: var(--space-3xl) var(--space-lg);
+    margin-bottom: var(--space-2xl);
+    border-top: 4px solid var(--color-gold);
+    border-bottom: 4px solid var(--color-gold);
+}
+
+.info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-container h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-dark-red);
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+.info-container h2 i {
+    color: var(--color-gold-dark);
+}
+
+/* Info Grid for Customer Service */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+}
+
+.info-card {
+    text-align: center;
+    padding: var(--space-xl);
+    background-color: var(--color-gray-100);
+    border-radius: var(--radius-lg);
+    border: 2px solid transparent;
+    transition: all var(--transition-normal);
+}
+
+.info-card:hover {
+    border-color: var(--color-gold);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.info-card i {
+    font-size: 2.5rem;
+    color: var(--color-dark-red);
+    margin-bottom: var(--space-md);
+}
+
+.info-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-dark-red);
+    margin-bottom: var(--space-sm);
+}
+
+.info-card p {
+    font-size: 0.95rem;
+    color: var(--color-gray-500);
+    line-height: 1.6;
+}
+
+/* Contact Section Specific */
+.contact-section {
+    background: linear-gradient(135deg, var(--color-gray-100) 0%, var(--color-white) 100%);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-gold);
+    box-shadow: var(--shadow-sm);
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: var(--color-dark-red);
+    margin-top: var(--space-xs);
+}
+
+.contact-item h4 {
+    font-family: var(--font-heading);
+    color: var(--color-dark-red);
+    margin-bottom: var(--space-xs);
+}
+
+.contact-item p {
+    color: var(--color-gray-600);
+    font-size: 0.95rem;
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: var(--color-white);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--color-gold);
+}
+
+.contact-form h3 {
+    font-family: var(--font-heading);
+    color: var(--color-dark-red);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: all var(--transition-normal);
+    outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.contact-btn {
+    width: 100%;
+    background-color: var(--color-dark-red);
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.contact-btn:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark-red);
+    border-color: var(--color-dark-red);
+}
+
+/* =========================================================================
+   SECTION 7: STICKY FOOTER
+   DEWEY: 347.73 - Copyright Law
+   ========================================================================= */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-sticky);
+    background-color: var(--color-dark-red);
+    border-top: 3px solid var(--color-gold);
+    padding: var(--space-md) var(--space-lg);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+}
+
+.footer-logo-svg {
+    width: 120px;
+    height: 36px;
+    display: block;
+}
+
+.footer-copyright {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.footer-copyright p {
+    color: var(--color-white);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.footer-tagline {
+    color: var(--color-gold) !important;
+    font-size: 0.8rem !important;
+    font-style: italic;
+    margin-top: var(--space-xs) !important;
+}
+
+/* Social Media Links */
+.footer-social {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all var(--transition-normal);
+    border: 1px solid var(--color-gold);
+}
+
+.social-link:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark-red);
+    transform: translateY(-3px);
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN
+   DEWEY: 006.74 - Adaptive Web Design
+   ========================================================================= */
+
+/* Tablet Breakpoint */
+@media (max-width: 1200px) {
+    body {
+        padding-left: 0;
+    }
+
+    .side-panel {
+        transform: translateX(-100%);
+        transition: transform var(--transition-normal);
+        width: 250px;
+        top: 0;
+        bottom: 0;
+        z-index: var(--z-modal);
+    }
+
+    .side-panel.active {
+        transform: translateX(0);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-dark-red);
+        flex-direction: column;
+        padding: var(--space-lg);
+        gap: var(--space-sm);
+        border: 3px solid var(--color-gold-dark);
+        border-top: none;
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .search-input {
+        width: 120px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: var(--space-xl);
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-features {
+        justify-content: center;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+    }
+
+    .footer-logo-svg {
+        width: 100px;
+        height: 30px;
+    }
+}
+
+/* Small Mobile Breakpoint */
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-cta-btn {
+        font-size: 1rem;
+        padding: var(--space-md) var(--space-lg);
+    }
+
+    .row-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* =========================================================================
+   ANIMATIONS
+   ========================================================================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.product-card {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Stagger animation for cards */
+.product-card:nth-child(1) { animation-delay: 0.05s; }
+.product-card:nth-child(2) { animation-delay: 0.1s; }
+.product-card:nth-child(3) { animation-delay: 0.15s; }
+.product-card:nth-child(4) { animation-delay: 0.2s; }
+.product-card:nth-child(5) { animation-delay: 0.25s; }
+.product-card:nth-child(6) { animation-delay: 0.3s; }
+.product-card:nth-child(7) { animation-delay: 0.35s; }
+
+/* =========================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --color-dark-red: #660000;
+        --color-gold: #CC9900;
+    }
+}

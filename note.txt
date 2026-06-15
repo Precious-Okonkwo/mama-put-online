@@ -1,0 +1,71 @@
+I am a new software developer and I want you to help me build a landing page of an online take-away Nigerian cooked meal restaurant called MamaPutOnline.
+
+The landing page should have the following sections:
+
+ A menu bar, logo, and a search window all on the same level 
+
+Let the menu be sticky and let it have the following items:
+- Home  
+- Menu
+- Customer service 
+- contact us
+
+Create a MamaPutOline logo for me and place it at the top left hand side of the landing page
+
+Let the menu bar be captured inside a dark red-colored frame. Let the lettering be white so they are legible
+
+Let the search window sit on the top right hand side of the menu bar.
+
+Have a side panel that sits on the left hand side of the menu bar. Let users be able to navigate to the main section using the links here.
+
+This section should have the following listed links, arranged in a stack format. Each of these should be clickable. When clicked, each should lead to the relevant row in the main section of the landing page
+- Soups
+- Main Dishes 
+- Local Delicacies 
+- Drinks 
+
+
+Hero section: 
+Below the menu bar section, let there be a hero section with a Call-To-Action button
+
+The hero section should be about 35% of the length of the landing page and 100% of its width 
+
+Let the hero section have a golden background
+
+The hero section should be vertically partitioned into two
+
+One side of the hero section should display the picture of a steaming, deliciously-cooked Nigerian egusi soup (with the right aspect ratio and with the right pixelization)
+
+The other side of the hero section should have boldly-written words in large print, lettering inviting people to not miss the opportunity to buy from my online store 
+
+
+Main Section: 
+A main body divided into 4 rows with each row having 7 product cards filled with different Nigerian meals relevant to that section 
+
+- Soups should have different types: egusi, ora, ewedu, afang, Okro, edikaikong, banga etc.
+
+- Main dishes should have different types
+
+- Local delicacies should have different types
+
+- Drinks should have different types
+
+The product cards should identify the product boldly, the quantity and the price in Naira
+
+
+Footer section:
+A footer that has all the copyright, the company logo and social media links of the company.
+
+Let the footer be sticky.
+
+Build me this using HTML and CSS. Do not use inline styling for CSS.
+
+Let the IDE be Visual Studio Code
+
+Kindly insert comments in your code so that my team members will be able to interpret and understand your code a lot faster.
+
+My theme color is dark red and gold. 
+
+Use pictures with good quality and the right aspect ratio.
+
+Document everything  on the Landing Page using the Dewey classification system
