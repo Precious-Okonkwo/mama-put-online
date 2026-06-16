@@ -3,9 +3,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MamaPutOnline Restaurant</title>
+
+    <link rel="stylesheet" href="./CSS/style.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     
+    <!-- ===========================  SECTION 1: STICKY NAVIGATION BAR  ============================= -->
+    <!-- 1.0 LANDING PAGE -->
+    <!-- 1.1 MENU SECTION -->
+
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+
+                <!-- 1.1.1 Logo Section - Top Left -->
+                <div class="logo-section">
+
+                    <a href="#home" class="logo-link">
+
+                        <!-- 1.1.1.1 SVG Logo for MamaPutOnline -->
+                        <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+
+                            <!-- 1.1.1.2 Cooking pot icon -->
+                            <ellipse cx="30" cy="35" rx="20" ry="12" fill="#FFD700" stroke="#8B0000" stroke-width="2"/>
+                            <rect x="10" y="25" width="40" height="8" rx="2" fill="#8B0000"/>
+                            <rect x="8" y="23" width="8" height="4" rx="1" fill="#FFD700"/>
+                            <rect x="44" y="23" width="8" height="4" rx="1" fill="#FFD700"/>
+
+                            <!-- 1.1.1.3 Steam lines -->
+                            <path d="M22 15 Q25 10 22 5" stroke="#FFD700" stroke-width="2" fill="none" opacity="0.8"/>
+                            <path d="M30 12 Q33 7 30 2" stroke="#FFD700" stroke-width="2" fill="none" opacity="0.8"/>
+                            <path d="M38 15 Q41 10 38 5" stroke="#FFD700" stroke-width="2" fill="none" opacity="0.8"/>
+
+                            <!-- 1.1.1.4 Text -->
+                            <text x="55" y="28" font-family="'Playfair Display', serif" font-size="14" font-weight="700" fill="#FFD700">Mama</text>
+                            <text x="55" y="42" font-family="'Playfair Display', serif" font-size="14" font-weight="700" fill="#FFD700">Put</text>
+                            <text x="95" y="35" font-family="'Open Sans', sans-serif" font-size="10" font-weight="600" fill="#FFFFFF">Online</text>
+                        </svg>
+                        <span class="logo-text">MamaPutOnline</span>
+                    </a>
+                </div>
+
+                <!-- 1.1.2 Navigation Menu Items -->
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#menu-section" class="nav-link">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#customer-service" class="nav-link">Customer Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact-us" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+
+                <!-- 1.1.3 Search Window - Top Right -->
+                <div class="search-section">
+                    <form class="search-form" action="#" method="GET">
+                        <input type="text" class="search-input" placeholder="Search meals..." aria-label="Search for meals">
+                        <button type="submit" class="search-btn" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 1.1.4 Mobile Menu Toggle (hamburger) -->
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!--  ======================= SECTION 2: SIDE PANEL (LEFT NAVIGATION) =========================  -->
+    <!-- 1.2 = LEFT SIDE PANEL SECTION -->
+    <aside class="side-panel" id="sidePanel">
+        <div class="side-panel-header">
+            <h3><i class="fas fa-utensils"></i> Categories</h3>
+        </div>
+        <ul class="side-panel-menu">
+            <li class="side-panel-item">
+                <a href="#soups" class="side-panel-link">
+                    <i class="fas fa-bowl-food"></i>
+                    <span>Soups</span>
+                </a>
+            </li>
+            <li class="side-panel-item">
+                <a href="#main-dishes" class="side-panel-link">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <span>Main Dishes</span>
+                </a>
+            </li>
+            <li class="side-panel-item">
+                <a href="#local-delicacies" class="side-panel-link">
+                    <i class="fas fa-star"></i>
+                    <span>Local Delicacies</span>
+                </a>
+            </li>
+            <li class="side-panel-item">
+                <a href="#drinks" class="side-panel-link">
+                    <i class="fas fa-glass-water"></i>
+                    <span>Drinks</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!--  ======================= SECTION 3: HERO SECTION =========================  -->
+    <!-- 1.3 = HERO SECTION -->
+
+    <main>
+        <section class="hero-section" id="home">
+            <div class="hero-container">
+                <!-- 1.3.1 Left Column: Egusi Soup Image -->
+                <div class="hero-image-col">
+                    <div class="hero-image-wrapper">
+                        <img src="./Images/Jollof-rice.jpeg" 
+                        alt="Steaming delicious Nigerian Egusi Soup with assorted meat and vegetables" 
+                        class="hero-image"
+                        loading="eager">
+                        <div class="hero-image-overlay">
+                           <span class="hero-badge">Mama's Special</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1.3.2 Right Column: Call-to-Action Text -->
+                <div class="hero-text-col">
+                    <div class="hero-content">
+                        <!-- 1.3.2.1 Hero Title -->
+                        <h1 class="hero-title">
+                            Delicious Homemade<br>
+                            <span class="hero-highlight">Nigerian Meals</span>
+                        </h1>
+
+                        <!-- 1.3.2.2 Hero Subtitle -->
+                       <p class="hero-subtitle">
+                            Enjoy delicious Nigerian meals crafted with passion and tradition. Every dish is freshly prepared to give you the comforting taste of home, delivered right to your door.
+                        </p>
+
+                        <!-- 1.3.2.3 Hero Features -->
+                        <div class="hero-features">
+                            <span class="feature-tag"><i class="fas fa-fire"></i> Freshly Cooked</span>
+                            <span class="feature-tag"><i class="fas fa-motorcycle"></i> Fast Delivery</span>
+                            <span class="feature-tag"><i class="fas fa-heart"></i> Made with Love</span>
+                        </div>
+
+                        <!-- 1.3.2.4 Hero Call-To-Action Button -->
+                        <a href="#menu-section" class="hero-cta-btn">
+                            <i class="fas fa-shopping-basket"></i>
+                            Order Now — Taste Home Today!
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--  ======================= SECTION 4: MAIN CONTENT AREA =========================  -->
+        <!-- 1.4 = MAIN SECTION -->
+        <!-- 1.4.1 ROW 1: SOUPS -->
+        <section class="product-row" id="soups">
+
+            <!-- 1.4.1.1 Row 1 Header -->
+            <div class="row-header">
+                <h2 class="row-title">
+                    <i class="fas fa-bowl-food"></i> Soups
+                </h2>
+
+                <p class="row-description">Rich, flavorful Nigerian soups made with traditional recipes</p>
+            </div>
+
+            <div class="product-grid">
+                <!-- 1.4.1.2 Card 1: Egusi Soup -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/simshomekitchen.com/52844329b1796827a6fca01bd1017a2fddad7408.jpg" 
+                        alt="Nigerian Egusi Soup with assorted meat" loading="lazy">
+
+                        <span class="card-badge">Bestseller</span>
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Egusi Soup</h3>
+
+                        <p class="card-desc">Ground melon seeds with spinach, assorted meat &amp; fish</p>
+                        <div class="card-meta">
+
+                            <span class="card-quantity">1 Litre Bowl</span>
+                            <span class="card-price">₦10,500</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.1.3 Card 2: Ora/Oha Soup -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/ora.jpeg" 
+                        alt="Nigerian Ora (Oha) Soup with cocoyam" loading="lazy">
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Oha Soup</h3>
+
+                        <p class="card-desc">Traditional Oha leaves with cocoyam thickener &amp; beef</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">1 Litre Bowl</span>
+                            <span class="card-price">₦9,200</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.1.4 Card 3: Ewedu Soup -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/ewedu.jpeg" 
+                        alt="Nigerian Ewedu (Jute Leaves) Soup" loading="lazy">
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Ewedu Soup</h3>
+
+                        <p class="card-desc">Smooth jute leaves blended with iru (locust beans)</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">1 Litre Bowl</span>
+                            <span class="card-price">₦8,800</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.1.5 Card 4: Afang Soup -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/afang.jpeg" 
+                        alt="Nigerian Afang Soup with waterleaf and okazi" loading="lazy">
+
+                        <span class="card-badge">Popular</span>
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Afang Soup</h3>
+
+                        <p class="card-desc">Okazi &amp; waterleaf with palm oil, periwinkle &amp; beef</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">1 Litre Bowl</span>
+                            <span class="card-price">₦10,000</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.1.6 Card 5: Okro Soup -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/okro.jpeg" 
+                        alt="Nigerian Okro Soup with seafood" loading="lazy">
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Okro Soup</h3>
+
+                        <p class="card-desc">Fresh okra with seafood, smoked fish &amp; palm oil</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">1 Litre Bowl</span>
+                            <span class="card-price">₦8,500</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.1.7 Card 6: Edikaikong Soup -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/edikaikong.jpeg" 
+                        alt="Nigerian Edikaikong (Edikang Ikong) Soup" loading="lazy">
+
+                        <span class="card-badge">Premium</span>
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Edikaikong</h3>
+
+                        <p class="card-desc">Pumpkin &amp; waterleaf with assorted meat &amp; stockfish</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">1 Litre Bowl</span>
+                            <span class="card-price">₦13,000</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.1.8 Card 7: Banga Soup -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/banga.jpeg" 
+                        alt="Nigerian Banga (Palm Nut) Soup" loading="lazy">
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Banga Soup</h3>
+
+                        <p class="card-desc">Palm nut extract with dried fish, meat &amp; traditional spices</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">1 Litre Bowl</span>
+                            <span class="card-price">₦8,000</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+
+        <!-- 1.4.2 ROW 2: MAIN DISHES -->
+        <section class="product-row" id="main-dishes">
+
+            <!-- 1.4.2.1 Row 2 Header -->
+            <div class="row-header">
+                <h2 class="row-title">
+                    <i class="fas fa-drumstick-bite"></i> Main Dishes
+                </h2>
+
+                <p class="row-description">Hearty Nigerian staples to satisfy every appetite</p>
+            </div>
+
+            <div class="product-grid">
+                <!-- 1.4.2.2 Card 1: Jollof Rice -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/Jollof-rice.jpeg" 
+                        alt="Nigerian Jollof Rice with beaf" loading="lazy">
+
+                        <span class="card-badge">Bestseller</span>
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Jollof Rice</h3>
+
+                        <p class="card-desc">Smoky party jollof with beaf</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">Full Plate</span>
+                            <span class="card-price">₦4,500</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.2.3 Card 2: Fried Rice -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/Friedrice.jpeg" 
+                        alt="Nigerian Fried Rice" loading="lazy">
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Fried Rice</h3>
+
+                        <p class="card-desc">Delicious Nigerian fried rice served with chicken</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">Full Plate</span>
+                            <span class="card-price">₦6,000</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.2.4 Card 3: Asun Rice -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/Asun-rice.jpeg" 
+                        alt="Nigerian Asun Rice with goat meat" loading="lazy">
+                        <span class="card-badge">Popular</span>
+
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Asun Rice</h3>
+
+                        <p class="card-desc">Delicious Asun rice served with spicy grilled goat meat</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">Full Plate</span>
+                            <span class="card-price">₦5,000</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.2.5 Card 4: Spaghetti -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/Spaghetti.jpeg" 
+                        alt="Nigerian Spaghetti " loading="lazy">
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Spaghetti</h3>
+
+                        <p class="card-desc">Delicious Spaghetti pasta with assorted kpomo &amp; fish</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">Full Plate</span>
+                            <span class="card-price">₦4,000</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.2.6 Card 5: Rice &amp; Stew-->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/Rice-and-Stew.jpeg" 
+                        alt="Nigerian Rice and Stew" loading="lazy">
+
+                        <span class="card-badge">Spicy</span>
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Rice &amp; Stew</h3>
+
+                        <p class="card-desc">Local brown rice with stew &amp; egg &amp; assorted meat</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">Full Plate</span>
+                            <span class="card-price">₦6,500</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.2.7 Card 6: Beans &amp; Plantain-->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/Beans-and-plantain.jpeg" 
+                        alt="Nigerian Beans and Plantain" loading="lazy">
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-title">Beans &amp; Plantain</h3>
+
+                        <p class="card-desc">Delicious well cooked beans served with sweet fried plantain</p>
+
+                        <div class="card-meta">
+                            <span class="card-quantity">Full Plate</span>
+                            <span class="card-price">₦3,500</span>
+                        </div>
+
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+
+                <!-- 1.4.2.8 Card 7: Porridge Yam -->
+                <article class="product-card">
+                    <div class="card-image">
+                        <img src="./Images/Porridge-yam.jpeg" 
+                             alt="Nigerian Porridge Yam" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Porridge Yam</h3>
+                        <p class="card-desc">Nigerian Spicy Porridge Yam </p>
+                        <div class="card-meta">
+                            <span class="card-quantity">Full Plate</span>
+                            <span class="card-price">₦3,000</span>
+                        </div>
+                        <button class="card-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
