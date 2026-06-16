@@ -1,13 +1,13 @@
 :root {
     /* Primary Theme Colors */
-    --color-dark-red: #8B0000;          /* Primary brand color - dark red */
-    --color-dark-red-light: #A52A2A;    /* Lighter variant for hover states */
-    --color-dark-red-dark: #5C0000;     /* Darker variant for shadows */
+    --color-dark-red: #8B0000;          
+    --color-dark-red-light: #A52A2A;   
+    --color-dark-red-dark: #5C0000;     
 
     /* Secondary Theme Colors */
-    --color-gold: #FFD700;              /* Secondary brand color - gold */
-    --color-gold-light: #FFE55C;        /* Lighter gold for highlights */
-    --color-gold-dark: #B8860B;         /* Darker gold for borders */
+    --color-gold: #FFD700;              
+    --color-gold-light: #FFE55C;       
+    --color-gold-dark: #B8860B;        
 
     /* Neutral Colors */
     --color-white: #FFFFFF;
@@ -110,10 +110,7 @@ body {
     background: var(--color-dark-red-light);
 }
 
-/* =========================================================================
-   SECTION 1: STICKY NAVIGATION BAR
-   DEWEY: 006.74 - Web Interface Design
-   ========================================================================= */
+/* =================     SECTION 1: STICKY NAVIGATION BAR      ====================== */
 .navbar {
     position: fixed;
     top: 0;
@@ -270,10 +267,7 @@ body {
     padding: var(--space-sm);
 }
 
-/* =========================================================================
-   SECTION 2: SIDE PANEL (LEFT NAVIGATION)
-   DEWEY: 006.74 - Navigation Systems
-   ========================================================================= */
+/* =======================    SECTION 2: SIDE PANEL (LEFT NAVIGATION)    ========================== */
 .side-panel {
     position: fixed;
     top: 70px; /* Below navbar */
@@ -341,10 +335,7 @@ body {
     padding-left: var(--space-xl);
 }
 
-/* =========================================================================
-   SECTION 3: HERO SECTION
-   DEWEY: 741.6 - Visual Communication Design
-   ========================================================================= */
+/* ===================   SECTION 3: HERO SECTION    ========================== */
 .hero-section {
     width: 100%;
     min-height: 35vh; /* 35% of viewport height */
@@ -1006,7 +997,7 @@ body {
 }
 
 /* Mobile Breakpoint */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .nav-menu {
         display: none;
         position: absolute;
@@ -1077,7 +1068,7 @@ body {
 }
 
 /* Small Mobile Breakpoint */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .product-grid {
         grid-template-columns: 1fr;
     }
